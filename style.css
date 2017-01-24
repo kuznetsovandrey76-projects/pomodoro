@@ -1,0 +1,43 @@
+* {
+	margin: 0 auto;
+}
+.change-time {
+	width: 50px;
+	border: 1px solid;
+	background: lightblue;
+	text-align: center;
+	display: inline-block;
+	margin: .2em;
+
+}
+.break {
+	background: tomato;
+}
+.pointer {
+	cursor: pointer;
+	
+}
+.aboveTimer p {
+	margin: 1em 0 0 2em;	
+	position: absolute;
+}
+.aboveTimer {
+	display: table;
+}
+.timer {
+	width: 100px;
+	text-align: center;
+	height: 100px;
+	border: 1px solid;
+	-webkit-border-radius: 100%;
+	        border-radius: 100%;
+	font-size: 1.5em;
+	background: lightgreen;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.WorkOrBreak {
+ 	display: table;
+ }
+
