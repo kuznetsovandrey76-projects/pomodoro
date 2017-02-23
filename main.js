@@ -1,5 +1,5 @@
 (function() { 
-var result_bg = document.querySelector('.timer');
+var result_bg = document.querySelector('.app__timer--output');
 
 	// WORK or BREAK
 var title = document.getElementById('title'),
@@ -87,6 +87,7 @@ function works() {
 				work = false;
 				ok = true;
 				working_TEMP = working_time.innerHTML*60;
+				alertAudio.play();
 				breaks();
 				clearInterval(working_interval);
 			}
@@ -114,6 +115,7 @@ function breaks() {
 					work = true;
 					ok = true;
 					breaking_TEMP = breaking_time.innerHTML*60;
+					alertAudio.play();
 					works();
 				}
 
@@ -131,35 +133,26 @@ function addZero(i) {
 	if (i < 10 && i >= 0) { i = "0" + i } return i;
 }
 
+var alertAudio = new Audio('alert.mp3');
 
-var audio = new Audio('tic.mp3');
-	audio.preload = "auto";
-	audio.loop = true;
-var audioWork = false;
+// var audio = new Audio('tic.mp3');
+// 	audio.preload = "auto";
+// 	audio.loop = true;
+// var audioWork = false;
 
-pomodoro.addEventListener('click', function() {
-	if(audioWork) { 
-		audio.pause();	
-		audioWork = false;
-	} else {
+// pomodoro.addEventListener('click', function() {
+// 	if(audioWork) { 
+// 		audio.pause();	
+// 		audioWork = false;
+// 	} else {
+// 		audio.play();
+// 		audioWork = true;
+// 	}	
+// })
 
-		audio.play();
-
-		audioWork = true;
-
-	}	
+title.addEventListener('click', function() {
+	alertAudio.play();
 })
-
-
-
-
-
-
-
-
-
-
-
 
 })();
 
