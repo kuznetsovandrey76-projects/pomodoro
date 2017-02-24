@@ -72,6 +72,9 @@ pomodoro.addEventListener('click', function (){
 	}
 });                            
 
+
+var timeToWork = 0;
+
 // Для запуска таймера
 function works() {
 	if (ok) {
@@ -88,13 +91,17 @@ function works() {
 				ok = true;
 				working_TEMP = working_time.innerHTML*60;
 				alertAudio.play();
+				timeToWork++;
+				console.log("count: " + timeToWork);
+				pomodoCount.innerHTML = timeToWork;
+				// time to break
 				breaks();
 				clearInterval(working_interval);
 			}
 
 			result.innerHTML = min + ' : ' + addZero(sec);
 			working_TEMP--;
-	}, 1000);
+	}, 10);
 	} else {
 		clearInterval(working_interval);
 		ok = true;
@@ -116,12 +123,13 @@ function breaks() {
 					ok = true;
 					breaking_TEMP = breaking_time.innerHTML*60;
 					alertAudio.play();
+					// time to work
 					works();
 				}
 
 				result.innerHTML = min + ' : ' + addZero(sec);
 				breaking_TEMP--;
-		}, 1000);
+		}, 10);
 		} else {
 			clearInterval(breaking_interval);
 			ok = true;
