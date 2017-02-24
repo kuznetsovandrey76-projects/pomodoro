@@ -44,7 +44,7 @@ working_time_minus.addEventListener('click', function() {
 });
 
 breaking_time_plus.addEventListener('click', function() {
-	if (breaking_time.innerHTML < 10) {
+	if (breaking_time.innerHTML < 15) {
 		breaking_time.innerHTML -= -1;
 		breaking_TEMP = breaking_time.innerHTML;
 		breaking_TEMP = parseInt(breaking_TEMP)*60;
@@ -72,8 +72,20 @@ pomodoro.addEventListener('click', function (){
 	}
 });                            
 
-
+// Подсчет pomodoro
 var timeToWork = 0;
+
+var pomodoroChildHTMLCollection = appPomodoro.children;
+var pomodoroChild = Array.prototype.slice.call( pomodoroChildHTMLCollection );
+
+// Изменяет прозрачность pomodoro
+function pomodoroOpacity(number) {
+	pomodoroChild.forEach(function(div, index) {
+		if(index < number) {
+			div.classList.add("ok");
+		}
+	});
+}
 
 // Для запуска таймера
 function works() {
@@ -93,7 +105,8 @@ function works() {
 				alertAudio.play();
 				timeToWork++;
 				console.log("count: " + timeToWork);
-				pomodoCount.innerHTML = timeToWork;
+				pomodoroOpacity(timeToWork);	
+				// pomodoCount.innerHTML = timeToWork;
 				// time to break
 				breaks();
 				clearInterval(working_interval);
@@ -101,7 +114,7 @@ function works() {
 
 			result.innerHTML = min + ' : ' + addZero(sec);
 			working_TEMP--;
-	}, 10);
+	}, 1000);
 	} else {
 		clearInterval(working_interval);
 		ok = true;
@@ -129,7 +142,7 @@ function breaks() {
 
 				result.innerHTML = min + ' : ' + addZero(sec);
 				breaking_TEMP--;
-		}, 10);
+		}, 1000);
 		} else {
 			clearInterval(breaking_interval);
 			ok = true;
