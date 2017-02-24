@@ -39,6 +39,7 @@ body {
 	border: 1px outset antiquewhite;
 	display: inline-block;
 	margin: .2em;
+	padding: .15em 0;
 	text-align: center;
 	width: 100px;
 	-webkit-border-radius: .3em;
